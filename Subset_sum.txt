@@ -1,29 +1,60 @@
-📄 Dimostrazione della Complessità Temporale dell’Algoritmo subset_sum
+Dimostrazione della Complessità Temporale dell’Algoritmo subset_sum
+
 Definizione del problema
-Sia A = [a₁, a₂, ..., aₙ] un insieme di n interi positivi, e T ∈ ℕ⁺ un valore target. Il problema subset_sum consiste nel determinare se esiste un sottoinsieme S ⊆ A tale che:
-\sum_{s \in S} s = T 
+Sia A = [a1, a2, ..., an] un insieme di n interi positivi, e T un intero positivo.
+Il problema subset_sum consiste nel determinare se esiste un sottoinsieme S ⊆ A tale che:
+somma(s in S) = T
 L’algoritmo in analisi cerca di determinare se tale sottoinsieme esiste, sfruttando un approccio iterativo sulle frequenze dei valori in A.
+
+
+---
+
 Descrizione dell’algoritmo
 L’algoritmo esegue le seguenti operazioni principali:
-• Calcola la frequenza di ciascun valore unico in A → Counter(A)
-• Ordina i valori unici in ordine decrescente → O(n log n)
-• Per ogni valore v in A, calcola il numero massimo di volte in cui può essere usato (fino a T // v o al massimo disponibile).
-• Per ogni combinazione di v con un altro valore w ≠ v, prova a completare la somma T tramite sottrazioni successive.
+
+Calcola la frequenza di ciascun valore unico in A → Counter(A)
+
+Ordina i valori unici in ordine decrescente → O(n log n)
+
+Per ogni valore v in A, calcola il numero massimo di volte in cui può essere usato (fino a T // v o al massimo disponibile)
+
+Per ogni combinazione di v con un altro valore w ≠ v, prova a completare la somma T tramite sottrazioni successive
+
+
+
+---
+
 Complessità temporale
 Sia:
-• n = numero totale di elementi nell’input
-• u = numero di valori distinti in A (con u ≤ n)
-• c = massimo numero di occorrenze di un singolo valore in A (con c ≤ n)
+
+n = numero totale di elementi nell’input
+
+u = numero di valori distinti in A (con u <= n)
+
+c = massimo numero di occorrenze di un singolo valore in A (con c <= n)
+
+
 L’algoritmo esegue:
-• Un ciclo esterno su ciascun valore unico → O(u)
-• Un ciclo interno su ogni altro valore unico → O(u)
-• Un ciclo più interno che esamina da 1 fino a counts[w] iterazioni → O(c)
-Quindi il numero massimo di iterazioni è:
-O(u^2 \cdot c) 
-Sostituendo i valori massimi (cioè u ≤ n e c ≤ n), otteniamo:
-O(n^2 \cdot n) = O(n^3) 
+
+Un ciclo esterno su ciascun valore unico → O(u)
+
+Un ciclo interno su ogni altro valore unico → O(u)
+
+Un ciclo più interno che esamina da 1 fino a counts[w] iterazioni → O(c)
+
+
+Quindi il numero massimo di iterazioni è: O(u^2 * c)
+
+Sostituendo i valori massimi (cioè u <= n e c <= n), otteniamo: O(n^2 * n) = O(n^3)
+
+
+---
+
 Conclusione
 L’algoritmo subset_sum ha complessità temporale nel caso peggiore pari a:
 O(n^3)
-Poiché la complessità è una funzione polinomiale nella dimensione dell’input, l’algoritmo appartiene alla classe P (problemi risolvibili in tempo polinomiale deterministico).
-Se funziona su tutti i casi di input (numeri interi positivi) il problema matematico storico è risolto.
+
+Poiché la complessità è una funzione polinomiale nella dimensione dell’input, l’algoritmo appartiene alla classe P
+(problemi risolvibili in tempo polinomiale deterministico).
+
+Se funziona su tutti i casi di input (numeri interi positivi), il problema matematico storico è risolto.
