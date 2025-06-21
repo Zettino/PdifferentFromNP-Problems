@@ -20,13 +20,19 @@ def subset_sum(numbers, target):
 
         for other in unique_values:
             if other == value:
-                continue
+                continue            
             for count in range(1, counts[other] + 1):
-                if other * count == remainder:
+                if other * count <= remainder:
+                    remainder -= other*count
+                if remainder ==0:
                     return True
                 if other * count > remainder:
                     break
     return False
-testArray = [5,5,5,3,5]
-res = subset_sum(testArray,9)
-print(res)
+res1 =subset_sum([2, 5, 9, 10], 17)  # 2 + 5 + 10 = 17
+res2 = subset_sum([1, 3, 4, 5], 7)  # 3 + 4 = 7
+res3 = subset_sum([1, 2, 5], 8)  # 1 + 2 + 5 = 8
+res4 = subset_sum([1, 1, 1, 1, 1, 1, 1, 1, 1], 9)  # 9 volte 1
+testArray = [2,2,8,10]
+res = subset_sum(testArray,17)
+print(res, res1, res2, res3, res4)
